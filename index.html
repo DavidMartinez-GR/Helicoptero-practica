@@ -1,13 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Helicoptero de rescate</title>
+    <title>Helicóptero de Rescate</title>
     <link rel="stylesheet" href="style.css">
-    <script src="functions.js"></script>
 </head>
 <body>
-    <h1>david peluo</h1>
+    <div class="contenedor-juego">
+        <!-- Marcador de puntuación -->
+        <div class="marcador">
+            <span>Rescatados: <span id="rescatados">0</span></span>
+            <span>Fallecidos: <span id="fallecidos">0</span></span>
+        </div>
+        
+        <!-- Área principal del juego -->
+        <div class="area-juego">
+            <!-- Helicóptero con GIF -->
+            <img id="helicoptero" class="helicoptero" src="imagenes/helicopetero.gif" alt="Helicóptero">
+            <!-- Base de aterrizaje -->
+            <div id="base" class="base"></div>
+        </div>
+    </div>
+    <script src="functions.js"></script>
 </body>
-</html>
+</h

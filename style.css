@@ -1,0 +1,109 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Contenedor principal del juego */
+.contenedor-juego {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: url("imagenes/fondo.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Área donde se desarrolla el juego */
+.area-juego {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* Estilo del marcador */
+.marcador {
+    
+    text-align: center;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 24px;
+    z-index: 1000;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+/* Estilo del helicóptero */
+.helicoptero {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    transition: all 2s ease-in-out;
+    z-index: 100;
+    top: 50px;
+    left: 50px;
+}
+
+/* Base de aterrizaje */
+
+.base {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 80px;
+    height: 80px;
+    background-color: #666;
+    border-radius: 50%;
+    z-index: 50;
+}
+
+/* Estilo de los supervivientes */
+.superviviente {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    transition: all 0.5s ease-in-out;
+    z-index: 75;
+    cursor: pointer;
+}
+
+.superviviente.rescatado {
+    opacity: 0;
+    transform: scale(0.5);
+}
+.superviviente.morir {
+    opacity: 0;
+    transform: scale(0.5) rotate(180deg);
+}
+
+/* Media query para asegurar que los elementos sean visibles en pantallas pequeñas */
+@media (max-width: 768px) {
+    .helicoptero {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .base {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .superviviente {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .marcador {
+        font-size: 18px;
+    }
+}
