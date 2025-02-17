@@ -57,12 +57,11 @@ body, html {
     left: 50px;
 }
 
-/* Base de rescate */
+/* Base de rescate (arriba a la izquierda) */
 .base {
     position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 20px;
+    left: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
