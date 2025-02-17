@@ -3,25 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Helicóptero de Rescate</title>
+    <title>Rescate Pokémon</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Marcador de puntuación -->
+    <div class="marcador">
+        <span>Rescatados: <span id="rescatados">0</span></span>
+        <span>Fallecidos: <span id="fallecidos">0</span></span>
+    </div>
+    
+    <!-- Contenedor principal del juego -->
     <div class="contenedor-juego">
-        <!-- Marcador de puntuación -->
-        <div class="marcador">
-            <span>Rescatados: <span id="rescatados">0</span></span>
-            <span>Fallecidos: <span id="fallecidos">0</span></span>
-        </div>
-        
-        <!-- Área principal del juego -->
         <div class="area-juego">
-            <!-- Helicóptero con GIF -->
-            <img id="helicoptero" class="helicoptero" src="imagenes/helicopetero.gif" alt="Helicóptero">
-            <!-- Base de aterrizaje -->
-            <div id="base" class="base"></div>
+            <!-- Latios (en lugar del helicóptero) -->
+            <img id="latios" class="latios" src="imagenes/latios.gif" alt="Latios">
+            
+            <!-- Base de rescate -->
+            <div id="base" class="base">
+                <img src="imagenes/base.png" alt="Base Rescate">
+                <img src="imagenes/base1.png" alt="Base Extensión">
+            </div>
         </div>
     </div>
+    
     <script src="functions.js"></script>
 </body>
-</h
+</html>

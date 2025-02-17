@@ -1,99 +1,93 @@
 // Variables globales
-let estaVolando = false;
-let rescatados = 0;
-let fallecidos = 0;
-const baseRescate = [];
+var estaVolando = false;
+var rescatados = 0;
+var fallecidos = 0;
+var baseRescate = [];
+var pokemones = ['pikachu.gif', 'charizard.gif', 'gengar.gif', 'mew.gif', 'mewtwo.gif', 'latios.gif'];
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Elementos del DOM
-    const helicoptero = document.getElementById('helicoptero');
-    const areaJuego = document.querySelector('.area-juego');
-    const base = document.getElementById('base');
-    const marcador = document.querySelector('.marcador');
+document.addEventListener('DOMContentLoaded', function() {
+    var latios = document.getElementById('latios');
+    var areaJuego = document.querySelector('.area-juego');
+    var base = document.getElementById('base');
+    var marcador = document.querySelector('.marcador');
 
-    // Mejorar diseño del marcador
-    marcador.style.background = "rgba(0, 0, 0, 0.8)";
-    marcador.style.color = "white";
-    marcador.style.padding = "20px";
-    marcador.style.borderRadius = "15px";
-    marcador.style.fontSize = "26px";
-    marcador.style.boxShadow = "0 0 15px rgba(255, 255, 255, 0.5)";
+    var posicionBase = { x: 50, y: 50 };
+    latios.style.left = posicionBase.x + 'px';
+    latios.style.top = posicionBase.y + 'px';
 
-    // Posición inicial del helicóptero
-    const posicionBase = { x: 50, y: 50 };
-    helicoptero.style.left = `${posicionBase.x}px`;
-    helicoptero.style.top = `${posicionBase.y}px`;
+    function crearPokemon() {
+        if (document.querySelectorAll('.pokemon').length >= 5) return;
 
-    function crearSuperviviente() {
-        if (document.querySelectorAll('.superviviente').length >= 5) return;
+        var pokemon = document.createElement('img');
+        pokemon.className = 'pokemon';
+        pokemon.src = 'imagenes/' + pokemones[Math.floor(Math.random() * pokemones.length)];
 
-        const superviviente = document.createElement('img');
-        superviviente.className = 'superviviente';
-        superviviente.src = 'imagenes/nadador-01.gif';
+        var alturaTotal = areaJuego.offsetHeight;
+        var anchoTotal = areaJuego.offsetWidth;
+        var x, y;
 
-        const alturaTotal = areaJuego.offsetHeight;
-        const anchoTotal = areaJuego.offsetWidth;
+        do {
+            x = 100 + Math.random() * (anchoTotal - 200);
+            y = (alturaTotal * 0.7) + Math.random() * (alturaTotal * 0.2);
+        } while (x > base.offsetLeft && x < base.offsetLeft + base.offsetWidth && y > base.offsetTop && y < base.offsetTop + base.offsetHeight);
         
-        const x = 100 + Math.random() * (anchoTotal - 200);
-        const y = (alturaTotal * 0.7) + Math.random() * (alturaTotal * 0.2);
+        pokemon.style.left = x + 'px';
+        pokemon.style.top = y + 'px';
         
-        superviviente.style.left = `${x}px`;
-        superviviente.style.top = `${y}px`;
+        areaJuego.appendChild(pokemon);
         
-        areaJuego.appendChild(superviviente);
-        
-        const tiempoVida = setTimeout(() => {
-            if (superviviente.parentNode) {
-                superviviente.classList.add('morir');
-                setTimeout(() => {
-                    superviviente.remove();
+        var tiempoVida = setTimeout(function() {
+            if (pokemon.parentNode) {
+                pokemon.classList.add('morir');
+                setTimeout(function() {
+                    pokemon.remove();
                     fallecidos++;
                     actualizarMarcador();
                 }, 1000);
             }
         }, 15000);
 
-        superviviente.addEventListener('click', () => {
+        pokemon.addEventListener('click', function() {
             if (!estaVolando) {
-                rescatar(superviviente, x, y);
+                rescatar(pokemon, x, y);
             }
         });
     }
 
-    function rescatar(superviviente, x, y) {
+    function rescatar(pokemon, x, y) {
         estaVolando = true;
-        helicoptero.classList.add('en-rescate');
+        latios.classList.add('en-rescate');
         
-        helicoptero.style.left = `${x}px`;
-        helicoptero.style.top = `${y}px`;
+        latios.style.left = x + 'px';
+        latios.style.top = y + 'px';
         
-        setTimeout(() => {
-            if (superviviente.parentNode) {
-                superviviente.classList.add('rescatado');
-                baseRescate.push(superviviente);
-                superviviente.style.opacity = "0";
+        setTimeout(function() {
+            if (pokemon.parentNode) {
+                pokemon.classList.add('rescatado');
+                baseRescate.push(pokemon);
+                pokemon.style.opacity = "0";
                 rescatados++;
                 actualizarMarcador();
             }
             
-            setTimeout(() => {
-                helicoptero.style.left = `${posicionBase.x}px`;
-                helicoptero.style.top = `${posicionBase.y}px`;
+            setTimeout(function() {
+                latios.style.left = posicionBase.x + 'px';
+                latios.style.top = posicionBase.y + 'px';
 
-                setTimeout(() => {
+                setTimeout(function() {
                     estaVolando = false;
-                    helicoptero.classList.remove('en-rescate');
-                    dejarEnBase(superviviente);
+                    latios.classList.remove('en-rescate');
+                    dejarEnBase(pokemon);
                 }, 1000);
             }, 1500);
         }, 2000);
     }
 
-    function dejarEnBase(superviviente) {
-        superviviente.style.opacity = "1";
-        superviviente.style.left = `${base.offsetLeft + 20 + (baseRescate.length * 10)}px`;
-        superviviente.style.top = `${base.offsetTop + 30}px`;
-        areaJuego.appendChild(superviviente);
+    function dejarEnBase(pokemon) {
+        pokemon.style.opacity = "1";
+        pokemon.style.left = (base.offsetLeft + 20 + (baseRescate.length * 10)) + 'px';
+        pokemon.style.top = (base.offsetTop + 30) + 'px';
+        areaJuego.appendChild(pokemon);
     }
 
     function actualizarMarcador() {
@@ -101,11 +95,11 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('fallecidos').textContent = fallecidos;
     }
 
-    setInterval(crearSuperviviente, 4000);
-    crearSuperviviente();
+    setInterval(crearPokemon, 4000);
+    crearPokemon();
 
-    window.addEventListener('resize', () => {
-        helicoptero.style.left = `${posicionBase.x}px`;
-        helicoptero.style.top = `${posicionBase.y}px`;
+    window.addEventListener('resize', function() {
+        latios.style.left = posicionBase.x + 'px';
+        latios.style.top = posicionBase.y + 'px';
     });
 });
