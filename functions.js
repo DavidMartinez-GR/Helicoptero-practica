@@ -56,32 +56,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function rescatar(pokemon, x, y) {
         estaVolando = true;
-        latios.classList.add('en-rescate');
-        
-        latios.style.left = x + 'px';
-        latios.style.top = y + 'px';
-        
-        setTimeout(function() {
-            if (pokemon.parentNode) {
-                pokemon.classList.add('rescatado');
-                baseRescate.push(pokemon);
-                pokemon.style.opacity = "0";
-                rescatados++;
-                actualizarMarcador();
-            }
-            
-            setTimeout(function() {
+        latios.classList.add('en-rescate'); // 🔹 Activar animación de ida
+    
+        // Mover Latios al Pokémon con animación
+        setTimeout(function () {
+            latios.style.left = x + 'px';
+            latios.style.top = y + 'px';
+    
+            setTimeout(function () {
+                latios.classList.remove('en-rescate'); // 🔹 Quitar animación de ida
+                latios.classList.add('retorno'); // 🔹 Activar animación de regreso
+    
                 latios.style.left = posicionBase.x + 'px';
                 latios.style.top = posicionBase.y + 'px';
-
-                setTimeout(function() {
+    
+                setTimeout(function () {
                     estaVolando = false;
-                    latios.classList.remove('en-rescate');
+                    latios.classList.remove('retorno'); // 🔹 Quitar animación de regreso
+    
+                    // Guardar Pokémon en la base antes de mostrarlo
+                    baseRescate.push(pokemon);
                     dejarEnBase(pokemon);
-                }, 1000);
+                }, 1500);
             }, 1500);
-        }, 2000);
+        }, 100);
     }
+    
 
     function dejarEnBase(pokemon) {
         pokemon.style.opacity = "1";

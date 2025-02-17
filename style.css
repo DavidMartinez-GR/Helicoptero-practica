@@ -58,6 +58,7 @@ body, html {
 }
 
 /* Animación de vuelo de Latios */
+/* Animación de vuelo al rescatar */
 @keyframes vueloLatios {
     0% { transform: translate(0, 0); }
     20% { transform: translate(-50px, -30px) rotate(-10deg); }
@@ -67,22 +68,23 @@ body, html {
     100% { transform: translate(0, 0); }
 }
 
-/* Animación de retorno con parábola */
+/* Animación de regreso, igual a la de ida pero invertida */
 @keyframes retornoLatios {
     0% { transform: translate(0, 0); }
-    30% { transform: translate(50px, -40px) rotate(10deg); }
-    60% { transform: translate(100px, 30px) rotate(-10deg); }
-    90% { transform: translate(50px, -10px) rotate(5deg); }
+    20% { transform: translate(50px, 30px) rotate(10deg); }
+    40% { transform: translate(120px, -40px) rotate(-15deg); }
+    60% { transform: translate(70px, 20px) rotate(5deg); }
+    80% { transform: translate(30px, -10px) rotate(-5deg); }
     100% { transform: translate(0, 0); }
 }
 
+/* Aplicación de animaciones */
 .latios.en-rescate {
     animation: vueloLatios 1.5s ease-in-out;
 }
 
 .latios.retorno {
     animation: retornoLatios 1.5s ease-in-out;
-    
 }
 
 /* Base de rescate (arriba a la izquierda) */
