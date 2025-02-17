@@ -82,6 +82,7 @@ body, html {
 
 .latios.retorno {
     animation: retornoLatios 1.5s ease-in-out;
+    
 }
 
 /* Base de rescate (arriba a la izquierda) */
