@@ -3,7 +3,7 @@ var estaVolando = false;
 var rescatados = 0;
 var fallecidos = 0;
 var baseRescate = [];
-var pokemones = ['pikachu.gif', 'charizard.gif', 'gengar.gif', 'mew.gif', 'mewtwo.gif', 'latios.gif'];
+var pokemones = ['pikachu.gif', 'charizard.gif', 'gengar.gif', 'mew.gif', 'mewtwo.gif'];
 
 document.addEventListener('DOMContentLoaded', function() {
     var latios = document.getElementById('latios');
