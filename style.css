@@ -11,6 +11,68 @@ body, html {
     overflow: hidden;
 }
 
+/* Pantalla de inicio */
+.pantalla-inicio {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url("imagenes/pantalla\ de\ carga.jpg") center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.boton-start {
+    font-size: 24px;
+    padding: 15px 30px;
+    border: none;
+    background-color: #ffcc00;
+    color: #333;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: transform 0.2s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.boton-start:hover {
+    transform: scale(1.1);
+}
+
+.pantalla-inicio.oculta {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease-out;
+}
+
+/* Contenedor principal del juego */
+.contenedor-juego {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: url("imagenes/fondo.jpg") center/cover no-repeat;
+    position: relative;
+}
+
+
+
+
+
+/* Reset básico */
+*
+ {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
 /* Contenedor principal del juego */
 .contenedor-juego {
     width: 100vw;

@@ -6,6 +6,15 @@ let baseRescate = [];
 let pokemones = ['pikachu.gif', 'charizard.gif', 'gengar.gif', 'mew.gif', 'mewtwo.gif'];
 
 document.addEventListener('DOMContentLoaded', function() {
+    let pantallaInicio = document.getElementById('pantallaInicio');
+    let botonStart = document.getElementById('botonStart');
+
+    botonStart.addEventListener('click', function() {
+        pantallaInicio.classList.add('oculta');
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
     let latios = document.getElementById('latios');
     let areaJuego = document.querySelector('.area-juego');
     let base = document.getElementById('base');

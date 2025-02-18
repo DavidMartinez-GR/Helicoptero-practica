@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rescate Pokémon</title>
-    <link rel="shortcut icon" href="imagenes/ico.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Pantalla de inicio -->
+    <div id="pantallaInicio" class="pantalla-inicio">
+        <button id="botonStart" class="boton-start">Start</button>
+    </div>
+
     <!-- Marcador de puntuación -->
     <div class="marcador">
         <span>Salvados: <span id="rescatados">0</span></span>
@@ -17,18 +21,13 @@
     <!-- Contenedor principal del juego -->
     <div class="contenedor-juego">
         <div class="area-juego">
-            <!-- Latios (en lugar del helicóptero) -->
             <img id="latios" class="latios" src="imagenes/latios.gif" alt="Latios">
-            
-            <!-- Base de rescate -->
             <div id="base" class="base">
                 <img src="imagenes/base.png" alt="Base Rescate">
-                <img src="imagenes/base1.png" alt="Base Extensión">
             </div>
         </div>
-        <!-- Botón de música -->
         <img id="botonMusica" class="boton-musica" src="imagenes/sonido.png" alt="Play">
-        <audio id="musicaFondo" src="audio/Pokemon Esmeralda - Intro.mp3" loop></audio>
+        <audio id="musicaFondo" src="audio/PokemonEsmeralda.mp3" loop></audio>
     </div>
     
     <script src="functions.js"></script>
