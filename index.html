@@ -9,7 +9,7 @@
 <body>
     <!-- Pantalla de inicio -->
     <div id="pantallaInicio" class="pantalla-inicio">
-        <button id="botonStart" class="boton-start">Start</button>
+        <button id="botonStart" class="boton-start" onclick="iniciarJuego()">Start</button>
     </div>
 
     <!-- Marcador de puntuación -->
@@ -28,7 +28,7 @@
             </div>
         </div>
         <img id="botonMusica" class="boton-musica" src="imagenes/sonido.png" alt="Play">
-        <audio id="musicaFondo" src="audio/Pokemon Esmeralda - Intro.mp3" loop></audio>
+        <audio id="musicaFondo" src="audio/Pokemon Esmeralda - Intro.mp3" preload="auto" loop></audio>
     </div>
     
     <script src="functions.js"></script>
