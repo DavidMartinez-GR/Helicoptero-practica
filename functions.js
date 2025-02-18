@@ -1,30 +1,30 @@
 // Variables globales
-var estaVolando = false;
-var rescatados = 0;
-var fallecidos = 0;
-var baseRescate = [];
-var pokemones = ['pikachu.gif', 'charizard.gif', 'gengar.gif', 'mew.gif', 'mewtwo.gif'];
+let estaVolando = false;
+let rescatados = 0;
+let fallecidos = 0;
+let baseRescate = [];
+let pokemones = ['pikachu.gif', 'charizard.gif', 'gengar.gif', 'mew.gif', 'mewtwo.gif'];
 
 document.addEventListener('DOMContentLoaded', function() {
-    var latios = document.getElementById('latios');
-    var areaJuego = document.querySelector('.area-juego');
-    var base = document.getElementById('base');
-    var marcador = document.querySelector('.marcador');
+    let latios = document.getElementById('latios');
+    let areaJuego = document.querySelector('.area-juego');
+    let base = document.getElementById('base');
+    let marcador = document.querySelector('.marcador');
 
-    var posicionBase = { x: 50, y: 50 };
+    let posicionBase = { x: 50, y: 50 };
     latios.style.left = posicionBase.x + 'px';
     latios.style.top = posicionBase.y + 'px';
 
     function crearPokemon() {
         if (document.querySelectorAll('.pokemon').length >= 5) return;
 
-        var pokemon = document.createElement('img');
+        let pokemon = document.createElement('img');
         pokemon.className = 'pokemon';
         pokemon.src = 'imagenes/' + pokemones[Math.floor(Math.random() * pokemones.length)];
 
-        var alturaTotal = areaJuego.offsetHeight;
-        var anchoTotal = areaJuego.offsetWidth;
-        var x, y;
+        let alturaTotal = areaJuego.offsetHeight;
+        let anchoTotal = areaJuego.offsetWidth;
+        let x, y;
 
         do {
             x = 100 + Math.random() * (anchoTotal - 200);
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         areaJuego.appendChild(pokemon);
         
-        var tiempoVida = setTimeout(function() {
+        let tiempoVida = setTimeout(function() {
             if (pokemon.parentNode) {
                 pokemon.classList.add('morir');
                 setTimeout(function() {
@@ -58,7 +58,6 @@ document.addEventListener('DOMContentLoaded', function() {
         estaVolando = true;
         latios.classList.add('en-rescate'); // 🔹 Activar animación de ida
     
-        // Mover Latios al Pokémon con animación
         setTimeout(function () {
             latios.style.left = x + 'px';
             latios.style.top = y + 'px';
@@ -77,6 +76,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Guardar Pokémon en la base antes de mostrarlo
                     baseRescate.push(pokemon);
                     dejarEnBase(pokemon);
+    
+                    // 🔹 Incrementar el contador de rescatados y actualizar marcador
+                    rescatados++;
+                    actualizarMarcador();
                 }, 1500);
             }, 1500);
         }, 100);
