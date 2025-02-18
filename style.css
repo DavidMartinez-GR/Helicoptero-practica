@@ -32,11 +32,20 @@ body, html {
     cursor: pointer;
     font-weight: bold;
     border-radius: 10px;
-    transition: transform 0.2s ease-in-out, opacity 0.5s ease-in-out;
+    transition: transform 0.2s ease-in-out, opacity 0.5s ease-in-out, box-shadow 0.3s ease-in-out;
+    position: relative;
+    top: -60px; /* Subimos el botón */
+    animation: parpadeo 1.5s infinite alternate;
 }
 
 .boton-start:hover {
     transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
+}
+
+@keyframes parpadeo {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
 }
 
 .pantalla-inicio.oculta {
