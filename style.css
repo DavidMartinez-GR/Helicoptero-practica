@@ -30,17 +30,19 @@ body, html {
 
 /* Estilo del marcador */
 .marcador {
+    font-family: Arial;
     position: absolute;
+    font-weight: bold;
     top: 10px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 15px 30px;
-    border-radius: 10px;
+    background-image: url("imagenes/dialogo1.png");
+    background-position: center;
+    background-size: cover;
+    color: #333;
+    padding: 30px 55px;
     font-size: 20px;
     z-index: 1000;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
     display: flex;
     gap: 20px;
     justify-content: center;
@@ -58,7 +60,6 @@ body, html {
 }
 
 /* Animación de vuelo de Latios */
-/* Animación de vuelo al rescatar */
 @keyframes vueloLatios {
     0% { transform: translate(0, 0); }
     20% { transform: translate(-50px, -30px) rotate(0deg); }
