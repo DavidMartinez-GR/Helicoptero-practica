@@ -30,17 +30,19 @@ body, html {
 
 /* Estilo del marcador */
 .marcador {
+    font-family: Arial;
     position: absolute;
+    font-weight: bold;
     top: 10px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 15px 30px;
-    border-radius: 10px;
+    background-image: url("imagenes/dialogo1.png");
+    background-position: center;
+    background-size: cover;
+    color: #333;
+    padding: 30px 55px;
     font-size: 20px;
     z-index: 1000;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
     display: flex;
     gap: 20px;
     justify-content: center;
@@ -51,40 +53,39 @@ body, html {
     position: absolute;
     width: 100px;
     height: 100px;
-    transition: all 2s ease-in-out;
+    transition: top 3s ease-in-out, left 3s ease-in-out;
     z-index: 100;
     top: 50px;
     left: 50px;
 }
 
 /* Animación de vuelo de Latios */
-/* Animación de vuelo al rescatar */
 @keyframes vueloLatios {
     0% { transform: translate(0, 0); }
-    20% { transform: translate(-50px, -30px) rotate(-10deg); }
-    40% { transform: translate(-120px, 40px) rotate(15deg); }
-    60% { transform: translate(-70px, -20px) rotate(-5deg); }
-    80% { transform: translate(-30px, 10px) rotate(5deg); }
+    20% { transform: translate(-50px, -30px) rotate(0deg); }
+    40% { transform: translate(-90px, 40px) rotate(0deg); }
+    60% { transform: translate(-70px, -20px) rotate(0deg); }
+    80% { transform: translate(-50px, 10px) rotate(0deg); }
     100% { transform: translate(0, 0); }
 }
 
 /* Animación de regreso, igual a la de ida pero invertida */
 @keyframes retornoLatios {
     0% { transform: translate(0, 0); }
-    20% { transform: translate(50px, 30px) rotate(10deg); }
-    40% { transform: translate(120px, -40px) rotate(-15deg); }
+    20% { transform: translate(50px, 30px) rotate(40deg); }
+    40% { transform: translate(90px, -40px) rotate(-15deg); }
     60% { transform: translate(70px, 20px) rotate(5deg); }
-    80% { transform: translate(30px, -10px) rotate(-5deg); }
+    80% { transform: translate(50px, -10px) rotate(-5deg); }
     100% { transform: translate(0, 0); }
 }
 
 /* Aplicación de animaciones */
 .latios.en-rescate {
-    animation: vueloLatios 1.5s ease-in-out;
+    animation: vueloLatios 2.5s ease-in-out;
 }
 
 .latios.retorno {
-    animation: retornoLatios 1.5s ease-in-out;
+    animation: retornoLatios 2.5s ease-in-out;
 }
 
 /* Base de rescate (arriba a la izquierda) */
@@ -98,8 +99,8 @@ body, html {
 }
 
 .base img {
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
     margin: 5px;
 }
 
@@ -126,4 +127,22 @@ body, html {
 .desaparecer {
     opacity: 0;
     transform: scale(0.5);
+}
+
+.boton-musica {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 100px;
+    height: 70px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.boton-musica:hover {
+    transform: scale(1.1);
+}
+
+.boton-musica.activo {
+    filter: brightness(1.3); /* Efecto visual cuando está activo */
 }

@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rescate Pokémon</title>
+    <link rel="shortcut icon" href="imagenes/ico.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Marcador de puntuación -->
     <div class="marcador">
-        <span>Rescatados: <span id="rescatados">0</span></span>
-        <span>Fallecidos: <span id="fallecidos">0</span></span>
+        <span>Salvados: <span id="rescatados">0</span></span>
+        <span>Debilitados: <span id="fallecidos">0</span></span>
     </div>
     
     <!-- Contenedor principal del juego -->
@@ -25,6 +26,9 @@
                 <img src="imagenes/base1.png" alt="Base Extensión">
             </div>
         </div>
+        <!-- Botón de música -->
+        <img id="botonMusica" class="boton-musica" src="imagenes/sonido.png" alt="Play">
+        <audio id="musicaFondo" src="audio/Pokemon Esmeralda - Intro.mp3" loop></audio>
     </div>
     
     <script src="functions.js"></script>
