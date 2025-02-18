@@ -9,7 +9,20 @@ document.addEventListener('DOMContentLoaded', function() {
     let latios = document.getElementById('latios');
     let areaJuego = document.querySelector('.area-juego');
     let base = document.getElementById('base');
-    let marcador = document.querySelector('.marcador');
+    let botonMusica = document.getElementById('botonMusica');
+    let musicaFondo = document.getElementById('musicaFondo');
+    let reproduciendo = false;
+
+    botonMusica.addEventListener('click', function() {
+        if (reproduciendo) {
+            musicaFondo.pause();
+            botonMusica.classList.remove("activo"); // Quita el efecto visual
+        } else {
+            musicaFondo.play();
+            botonMusica.classList.add("activo"); // Agrega el efecto visual
+        }
+        reproduciendo = !reproduciendo;
+    });
 
     let posicionBase = { x: 50, y: 50 };
     latios.style.left = posicionBase.x + 'px';
