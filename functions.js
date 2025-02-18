@@ -87,40 +87,45 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }   
 
-function rescatar(pokemon, x, y) {
-    estaVolando = true;
-    latios.classList.add('en-rescate');
-
-    setTimeout(function() {
-        latios.style.left = pokemon.style.left;
-        latios.style.top = pokemon.style.top;
-
-        // 🔹 Desaparece inmediatamente al ser recogido
-        pokemon.classList.add("desaparecer");
+    function rescatar(pokemon, x, y) {
+        estaVolando = true;
+        latios.classList.add('en-rescate');
+    
+        // 🔹 Latios vuela más lento al Pokémon (3s)
+        latios.style.transition = "top 3s ease-in-out, left 3s ease-in-out";
+        latios.style.left = x + "px";
+        latios.style.top = y + "px";
+    
+        // 🔹 Esperamos 3s para que Latios llegue antes de hacer desaparecer al Pokémon
         setTimeout(function() {
-            pokemon.remove();
-        }, 1000);
-
-        setTimeout(function() {
-            latios.classList.remove('en-rescate');
-            latios.classList.add('retorno');
-
-            latios.style.left = posicionBase.x + 'px';
-            latios.style.top = posicionBase.y + 'px';
-
+            pokemon.classList.add("desaparecer");
+    
             setTimeout(function() {
-                estaVolando = false;
-                latios.classList.remove('retorno');
-
-                // 🔹 Ahora aparece en la base antes de desaparecer
-                dejarEnBase(pokemon);
-
-                rescatados++;
-                actualizarMarcador();
-            }, 1500);
-        }, 1500);
-    }, 100);
-}
+                pokemon.remove();
+            }, 1000); // 🔹 Animación de desaparición del Pokémon (1s)
+    
+            setTimeout(function() {
+                latios.classList.remove('en-rescate');
+                latios.classList.add('retorno');
+    
+                // 🔹 Regreso más lento a la base (3.5s)
+                latios.style.transition = "top 3.5s ease-in-out, left 3.5s ease-in-out";
+                latios.style.left = posicionBase.x + 'px';
+                latios.style.top = posicionBase.y + 'px';
+    
+                setTimeout(function() {
+                    estaVolando = false;
+                    latios.classList.remove('retorno');
+    
+                    // 🔹 Aparece en la base antes de desaparecer
+                    dejarEnBase(pokemon);
+    
+                    rescatados++;
+                    actualizarMarcador();
+                }, 3500); // 🔹 Esperamos 3.5s para el regreso
+            }, 1000);
+        }, 3000); // 🔹 Ahora el Pokémon desaparece cuando Latios llega (3s)
+    }
 
 function dejarEnBase(pokemon) {
     let pokemonBase = document.createElement('img');
