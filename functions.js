@@ -53,37 +53,43 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-
     function rescatar(pokemon, x, y) {
         estaVolando = true;
         latios.classList.add('en-rescate'); // 🔹 Activar animación de ida
     
+        // Calcular distancia total a recorrer
+        var deltaX = x - latios.offsetLeft;
+        var deltaY = y - latios.offsetTop;
+        var distancia = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+        var duracion = distancia * 5; // Ajustar tiempo en función de la distancia
+    
+        latios.style.transition = 'left ' + duracion + 'ms linear, top ' + duracion + 'ms linear';
+        latios.style.left = x + 'px';
+        latios.style.top = y + 'px';
+    
         setTimeout(function () {
-            latios.style.left = x + 'px';
-            latios.style.top = y + 'px';
+            latios.classList.remove('en-rescate');
+            latios.classList.add('retorno');
+    
+            latios.style.transition = 'left 1500ms linear, top 1500ms linear';
+            latios.style.left = posicionBase.x + 'px';
+            latios.style.top = posicionBase.y + 'px';
     
             setTimeout(function () {
-                latios.classList.remove('en-rescate'); // 🔹 Quitar animación de ida
-                latios.classList.add('retorno'); // 🔹 Activar animación de regreso
+                estaVolando = false;
+                latios.classList.remove('retorno');
     
-                latios.style.left = posicionBase.x + 'px';
-                latios.style.top = posicionBase.y + 'px';
+                // Guardar Pokémon en la base antes de mostrarlo
+                baseRescate.push(pokemon);
+                dejarEnBase(pokemon);
     
-                setTimeout(function () {
-                    estaVolando = false;
-                    latios.classList.remove('retorno'); // 🔹 Quitar animación de regreso
-    
-                    // Guardar Pokémon en la base antes de mostrarlo
-                    baseRescate.push(pokemon);
-                    dejarEnBase(pokemon);
-    
-                    // 🔹 Incrementar el contador de rescatados y actualizar marcador
-                    rescatados++;
-                    actualizarMarcador();
-                }, 1500);
+                // 🔹 Incrementar el contador de rescatados y actualizar marcador
+                rescatados++;
+                actualizarMarcador();
             }, 1500);
-        }, 100);
+        }, duracion);
     }
+    
     
 
     function dejarEnBase(pokemon) {
