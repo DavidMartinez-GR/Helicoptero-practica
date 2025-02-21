@@ -1,16 +1,8 @@
-<<<<<<< Updated upstream
-// 🔹 Variables globales para el control del juego
-let estaVolando = false;        // Control del estado de vuelo de Latios
-let rescatados = 0;            // Contador de Pokémon rescatados
-let fallecidos = 0;            // Contador de Pokémon perdidos
-let baseRescate = [];          // Array para los Pokémon en la base
-let pokemones = ['pikachu.gif', 'charizard.gif', 'gengar.gif', 'mew.gif', 'mewtwo.gif'];  // Imágenes disponibles
-=======
-let estaVolando = false;  // Indica si Latios está en medio de un rescate
-let rescatados = 0;       // Contador de Pokémon rescatados
-let fallecidos = 0;       // Contador de Pokémon que desaparecen sin ser rescatados
-let baseRescate = [];     // Almacena los Pokémon rescatados (no se usa en este código)
-
+// Variables globales
+let estaVolando = false;
+let rescatados = 0;
+let fallecidos = 0;
+let baseRescate = [];
 let pokemones = ['pikachu.gif', 'charizard.gif', 'gengar.gif', 'mew.gif', 'mewtwo.gif'];
 >>>>>>> Stashed changes
 
