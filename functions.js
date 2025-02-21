@@ -81,20 +81,21 @@ document.addEventListener('DOMContentLoaded', function() {
                     seSuperpone = true;
                 }
     
-                // 🔹 Comprueba superposición con otros Pokémon
-                document.querySelectorAll('.pokemon').forEach(function(pokemonExistente) {
-                    let pokemonX = pokemonExistente.offsetLeft;
-                    let pokemonY = pokemonExistente.offsetTop;
-                    let pokemonAncho = pokemonExistente.offsetWidth;
-                    let pokemonAlto = pokemonExistente.offsetHeight;
-    
-                    if (x + 50 > pokemonX - margen &&
-                        x < pokemonX + pokemonAncho + margen &&
-                        y + 50 > pokemonY - margen &&
-                        y < pokemonY + pokemonAlto + margen) {
-                        seSuperpone = true;
-                    }
-                });
+             // Obtiene las coordenadas y dimensiones de cada Pokémon ya existente
+document.querySelectorAll('.pokemon').forEach(function(pokemonExistente) {
+    let pokemonX = pokemonExistente.offsetLeft;      // Posición X del Pokémon existente
+    let pokemonY = pokemonExistente.offsetTop;       // Posición Y del Pokémon existente
+    let pokemonAncho = pokemonExistente.offsetWidth; // Ancho del Pokémon existente
+    let pokemonAlto = pokemonExistente.offsetHeight; // Alto del Pokémon existente
+
+    // Verifica si hay superposición entre el nuevo Pokémon y los existentes
+    if (x + 50 > pokemonX - margen &&               // Borde derecho del nuevo > Borde izquierdo del existente
+        x < pokemonX + pokemonAncho + margen &&     // Borde izquierdo del nuevo < Borde derecho del existente
+        y + 50 > pokemonY - margen &&               // Borde inferior del nuevo > Borde superior del existente
+        y < pokemonY + pokemonAlto + margen) {      // Borde superior del nuevo < Borde inferior del existente
+        seSuperpone = true;                         // Si hay superposición, marca como verdadero
+    }
+});
     
                 intentos++;
                 // 🔹 Limita los intentos para evitar bucles infinitos
